@@ -8,7 +8,7 @@ const Header = () => {
   const path = usePathname();
   return (
     <header className='h-16 flex justify-end'>
-      <ul className='flex items-center max-w-2xl gap-12 h-full'>
+      <ul className='flex items-center max-w-2xl gap-8 h-full'>
         <li>
           <Button
             asChild
@@ -42,7 +42,7 @@ const Header = () => {
             <Link href='/blog'>Blog</Link>
           </Button>
         </li>
-        <li>
+        {/* <li>
           <Button
             asChild
             variant={"link"}
@@ -52,7 +52,7 @@ const Header = () => {
           >
             <Link href='/about'>about</Link>
           </Button>
-        </li>
+        </li> */}
       </ul>
     </header>
   );

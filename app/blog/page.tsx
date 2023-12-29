@@ -19,7 +19,9 @@ const BlogPage = () => {
         <TableCaption></TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className='ml-5'>Title</TableHead>
+            <TableHead className='w-[100px]'>Date</TableHead>
+
+            <TableHead>Title</TableHead>
 
             <TableHead className='text-right'></TableHead>
           </TableRow>
@@ -27,6 +29,9 @@ const BlogPage = () => {
         <TableBody>
           {/* 1st row */}
           <TableRow>
+            <TableCell className='text-left text-muted-foreground'>
+              05-21-2021
+            </TableCell>
             <TableCell className='font-medium'>
               <Link href='/blog/article1' className='hover:underline'>
                 Unveiling the Secrets of Python: A Beginner&apos;s Guide
@@ -38,6 +43,9 @@ const BlogPage = () => {
           </TableRow>
           {/* 2nd row */}
           <TableRow>
+            <TableCell className='text-left text-muted-foreground'>
+              10-10-2023
+            </TableCell>
             <TableCell className='font-medium'>
               <Link href='#' className='hover:underline'>
                 The Future of Artificial Intelligence: Trends and Breakthroughs
@@ -49,6 +57,9 @@ const BlogPage = () => {
           </TableRow>
           {/* 3rd row */}
           <TableRow>
+            <TableCell className='text-left text-muted-foreground'>
+              05-12-2023
+            </TableCell>
             <TableCell className='font-medium'>
               <Link href='#' className='hover:underline'>
                 The Evolution of Mobile Apps: Trends Shaping the App Development
