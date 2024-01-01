@@ -19,10 +19,8 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={GeistMono.className}>
-        <main className='max-w-4xl mx-auto'>
-          <Header />
-          <div className='mt-24'>{children}</div>
-        </main>
+        <Header />
+        {children}
       </body>
     </html>
   );

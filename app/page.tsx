@@ -1,63 +1,50 @@
-import { Metadata } from "next";
-import Link from "next/link";
-
-import { Inter, Great_Vibes } from "next/font/google";
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const greatVibes = Great_Vibes({
-  weight: "400",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-export const metadata: Metadata = {
-  title: {
-    template: "%s | Home",
-    default: "Home",
-  },
-};
+"use client";
+import useMousePosition from "@/lib/useMousePosition";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 export default function Home() {
+  const [isHovered, setIsHovered] = useState(false);
+  const { x, y } = useMousePosition();
+  const size = isHovered ? 800 : 40;
+
   return (
-    <main>
-      <h1 className='text-2xl font-bold my-5'>About</h1>
-      <div className={inter.className}>
-        <p className='leading-8 indent-10'>
-          <span
-            className={`${greatVibes.className} text-[50px] mr-1 font-bold`}
-          >
-            M
-          </span>
-          eet Nizar, a passionate computer science student with a love for
-          unraveling the intricacies of the digital world. From tinkering with
-          the basic elements of web development to diving into the sophisticated
-          realms of Next.js, Nizar&apos;s journey into computer science has been
-          nothing short of exhilarating. This early fascination paved the way
-          for a deep exploration of web technologies. Currently pursuing a
-          degree in computer science with a focus on web development at a
-          renowned university, Nizar thrives on the challenges presented by the
-          dynamic field. The academic journey is no walk in the park, but
-          Nizar&apos;s determination and inquisitive nature turn every hurdle
-          into an opportunity for learning and growth. Explore my{" "}
-          <Link
-            className='text-blue-600 underline dark:text-blue-500 hover:no-underline'
-            href='/blog'
-          >
-            blog
-          </Link>
-          , where I share my discoveries in the world of web development.
-          Alternatively, take a glimpse at my previous{" "}
-          <Link
-            className='text-blue-600 underline dark:text-blue-500 hover:no-underline'
-            href='/projects'
-          >
-            projects
-          </Link>
-          , where Next.js takes center stage.
+    <main className='h-screen'>
+      <motion.div
+        className='flex h-[900px] cursor-default justify-center items-center text-[50px] leading-[66px] w-full absolute left-0'
+        style={{
+          maskImage: 'url("/mask.svg")',
+          maskRepeat: "no-repeat",
+          maskSize: "50px",
+          background: "#ec4e39",
+          position: "absolute",
+          color: "black",
+        }}
+        animate={{
+          WebkitMaskPosition: `${x - size * 0.5}px ${y - size * 0.4}px`,
+          WebkitMaskSize: `${size}px`,
+        }}
+        transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
+      >
+        <p
+          className='w-[1000px] p-10 text-center'
+          onMouseEnter={() => {
+            setIsHovered(true);
+          }}
+          onMouseLeave={() => {
+            setIsHovered(false);
+          }}
+        >
+          A visual designer with skills that haven&apos;t been replaced by A.I
+          (yet) making good shit only if the paycheck is equally good.
+        </p>
+      </motion.div>
+
+      <div className='text-second flex cursor-default justify-center items-center text-[50px] leading-[66px] w-full h-[900px]'>
+        <p className='w-[1000px] p-10 text-center'>
+          I&apos;m a <span className='text-main'>selectively skilled</span>{" "}
+          product designer with strong focus on producing high quality &
+          impactful digital experience.
         </p>
       </div>
     </main>

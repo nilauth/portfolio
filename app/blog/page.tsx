@@ -11,7 +11,7 @@ import Link from "next/link";
 
 const BlogPage = () => {
   return (
-    <main>
+    <main className='w-1/2 mx-auto mt-24'>
       <h1 className='text-2xl font-bold my-5'>
         What I have to say about different type of stuff
       </h1>
