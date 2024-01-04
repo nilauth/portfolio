@@ -9,7 +9,7 @@ export default function Home() {
   const size = isHovered ? 800 : 40;
 
   return (
-    <main className='h-screen'>
+    <main className='h-screen font-mono'>
       <motion.div
         className='flex h-[900px] cursor-default justify-center items-center text-[50px] leading-[66px] w-full absolute left-0'
         style={{

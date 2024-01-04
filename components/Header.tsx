@@ -9,7 +9,7 @@ const Header = () => {
   const path = usePathname();
   return (
     <header
-      className={cn("h-16 flex justify-center w-full z-10 top-0", {
+      className={cn("h-16 flex justify-center w-full z-10 top-0 font-mono", {
         absolute: path == "/",
       })}
     >
@@ -41,7 +41,7 @@ const Header = () => {
             asChild
             variant={"link"}
             className={cn({
-              underline: path == "/blog",
+              underline: path.startsWith("/blog"),
             })}
           >
             <Link href='/blog'>Blog</Link>
