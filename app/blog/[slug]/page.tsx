@@ -11,6 +11,7 @@ import { Undo2 } from "lucide-react";
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { formatDate } from "@/lib/utils";
 
 const options = {
   mdxOptions: {
@@ -70,6 +71,17 @@ export default function Post({ params }: any) {
         <h1 className='title font-medium tracking-tighter max-w-[650px]'>
           {props.frontMatter.title}
         </h1>
+        <div className='mt-[-16px] text-sm text-slate-500'>
+          <Link
+            href='https://twitter.com/nilauth'
+            rel='noopener noreferrer'
+            target='_blank'
+            className='no-underline text-slate-500 hover:text-slate-600'
+          >
+            @nilauth
+          </Link>{" "}
+          | {formatDate(props.frontMatter.date)}
+        </div>
         <div className='prose-img:m-0'>
           <MDXRemote
             source={props.content}

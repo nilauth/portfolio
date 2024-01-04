@@ -14,6 +14,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { time } from "console";
+import { extractYear } from "@/lib/utils";
 
 const BlogPage = () => {
   // mdx related code
@@ -38,6 +39,9 @@ const BlogPage = () => {
       slug: filename.replace(".mdx", ""),
     };
   });
+
+  let latestYears = {};
+
   return (
     <main className='w-1/2 mx-auto mt-12 max-w-[650px] font-sans'>
       <h1 className='text-2xl mb-8'>
@@ -55,37 +59,70 @@ const BlogPage = () => {
         </TableHeader>
         <TableBody>
           {/* 1st row */}
-          {blogs.map((blog) => (
-            // <Link href={'/blogs/' + blog.slug} passHref key={blog.slug}>
-            //   <div className='py-2 flex justify-between align-middle gap-2'>
-            //       <div>
-            //           <h3 className="text-lg font-bold">{blog.meta.title}</h3>
-            //           <p className="text-gray-400">{blog.meta.description}</p>
-            //       </div>
-            //       <div className="my-auto text-gray-400">
-            //           <p>{blog.meta.date}</p>
-            //       </div>
-            //   </div>
-            // </Link>
-            <TableRow key={blog.slug}>
-              <TableCell className='text-left text-muted-foreground w-fit'>
-                {blog.meta.date}
-              </TableCell>
-              <TableCell className='font-medium'>
-                <Link
-                  href={"/blog/" + blog.slug}
-                  passHref
-                  key={blog.slug}
-                  className='hover:underline'
-                >
-                  {blog.meta.title}
-                </Link>
-              </TableCell>
-              <TableCell className='text-right text-muted-foreground w-fit'>
-                {blog.meta.readTime}
-              </TableCell>
-            </TableRow>
-          ))}
+          {/* {blogs
+            .sort((a, b) => {
+              // Assuming blog.meta.date is in the 'mm-dd-yyyy' format
+              const dateA = new Date(a.meta.date);
+              const dateB = new Date(b.meta.date);
+              return dateB - dateA; // Sort in descending order (newest first)
+            })
+            .map((blog) => (
+              <TableRow key={blog.slug}>
+                <TableCell className='text-left text-muted-foreground w-fit'>
+                  {extractYear(blog.meta.date)}
+                </TableCell>
+                <TableCell className='font-medium'>
+                  <Link
+                    href={"/blog/" + blog.slug}
+                    passHref
+                    key={blog.slug}
+                    className='hover:underline'
+                  >
+                    {blog.meta.title}
+                  </Link>
+                </TableCell>
+                <TableCell className='text-right text-muted-foreground w-fit'>
+                  {blog.meta.readTime}
+                </TableCell>
+              </TableRow>
+            ))} */}
+          {blogs
+            .sort((a, b) => {
+              // Assuming blog.meta.date is in the 'mm-dd-yyyy' format
+              const dateA = new Date(a.meta.date);
+              const dateB = new Date(b.meta.date);
+              return dateB - dateA; // Sort in descending order (newest first)
+            })
+            .map((blog) => {
+              const blogYear = extractYear(blog.meta.date);
+
+              // Determine whether to display the year or an empty string
+              const yearToDisplay = latestYears[blogYear] ? "" : blogYear;
+
+              // Update latestYears for the next iteration
+              latestYears[blogYear] = true;
+
+              return (
+                <TableRow key={blog.slug}>
+                  <TableCell className='text-left text-muted-foreground w-fit'>
+                    {yearToDisplay}
+                  </TableCell>
+                  <TableCell className='font-medium'>
+                    <Link
+                      href={"/blog/" + blog.slug}
+                      passHref
+                      key={blog.slug}
+                      className='hover:underline'
+                    >
+                      {blog.meta.title}
+                    </Link>
+                  </TableCell>
+                  <TableCell className='text-right text-muted-foreground w-fit'>
+                    {blog.meta.readTime}
+                  </TableCell>
+                </TableRow>
+              );
+            })}
         </TableBody>
       </Table>
     </main>
