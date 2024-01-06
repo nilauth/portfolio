@@ -3,15 +3,14 @@ import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import path from "path";
 
-import { GeistMono } from "geist/font/mono";
 import { Tweet } from "react-tweet";
 import remarkGfm from "remark-gfm";
-import { GeistSans } from "geist/font/sans";
-import { Undo2 } from "lucide-react";
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import GoBack from "@/components/GoBack";
 import { formatDate } from "@/lib/utils";
+import Link from "next/link";
+
+import ExternalLink from "@/components/ExternalLink";
 
 const options = {
   mdxOptions: {
@@ -59,14 +58,8 @@ export default function Post({ params }: any) {
 
   return (
     <main className='mt-12 font-sans'>
-      <article className='text-slate-900/80 leading-8 prose prose-p:text-base prose-h1:text-2xl prose-sm md:prose-base lg:prose-lg mx-auto max-w-[650px]'>
-        <Link
-          href='/blog'
-          className='flex gap-x-1 items-center w-fit text-sm text-slate-500 mb-5 hover:text-slate-700 no-underline'
-        >
-          <Undo2 className='h-4 w-4 mb-1' />
-          Back
-        </Link>
+      <article className='text-slate-900/80 leading-8 prose prose-p:text-base prose-h1:text-2xl prose-sm md:prose-base lg:prose-lg mx-auto max-w-[650px] px-4 pb-6'>
+        <GoBack url='/blog' />
 
         <h1 className='title font-medium tracking-tighter max-w-[650px]'>
           {props.frontMatter.title}
@@ -85,7 +78,7 @@ export default function Post({ params }: any) {
         <div className='prose-img:m-0'>
           <MDXRemote
             source={props.content}
-            components={{ Tweet }}
+            components={{ Tweet, ExternalLink, Link }}
             options={options}
           />
         </div>

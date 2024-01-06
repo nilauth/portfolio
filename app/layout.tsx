@@ -2,14 +2,15 @@ import { GeistMono } from "geist/font/mono";
 import type { Metadata } from "next";
 
 import Header from "@/components/Header";
-import "./globals.css";
 import { GeistSans } from "geist/font/sans";
-
-// const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Nilauth",
-  description: "Nilauth's portfolio.",
+  title: {
+    default: "Nilauth",
+    template: "%s | Nilauth",
+  },
+  description: "Nilauth's portfolio & blog.",
 };
 
 export default function RootLayout({

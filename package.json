@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-icons": "^1.3.0",
+    "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@tailwindcss/typography": "^0.5.10",
     "class-variance-authority": "^0.7.0",
@@ -22,6 +24,7 @@
     "next-mdx-remote": "^4.4.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-icons": "^4.12.0",
     "react-tweet": "^3.2.0",
     "remark-gfm": "^4.0.0",
     "tailwind-merge": "^2.2.0",

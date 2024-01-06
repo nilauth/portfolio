@@ -10,11 +10,16 @@ import {
 import Link from "next/link";
 
 // mdx related imports
+import { cn, extractYear } from "@/lib/utils";
 import fs from "fs";
-import path from "path";
 import matter from "gray-matter";
-import { time } from "console";
-import { extractYear } from "@/lib/utils";
+import path from "path";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description: "Nilauth's blog.",
+};
 
 const BlogPage = () => {
   // mdx related code
@@ -112,13 +117,17 @@ const BlogPage = () => {
                       href={"/blog/" + blog.slug}
                       passHref
                       key={blog.slug}
-                      className='hover:underline'
+                      className={cn({
+                        "hover:underline": blog.meta.released,
+                        "text-muted-foreground/40 pointer-events-none italic":
+                          !blog.meta.released,
+                      })}
                     >
                       {blog.meta.title}
                     </Link>
                   </TableCell>
                   <TableCell className='text-right text-muted-foreground w-fit'>
-                    {blog.meta.readTime}
+                    {blog.meta.released ? blog.meta.readTime : ""}
                   </TableCell>
                 </TableRow>
               );

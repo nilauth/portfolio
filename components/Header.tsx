@@ -30,7 +30,7 @@ const Header = () => {
             asChild
             variant={"link"}
             className={cn({
-              underline: path == "/projects",
+              underline: path.startsWith("/projects"),
             })}
           >
             <Link href='/projects'>Projects</Link>
