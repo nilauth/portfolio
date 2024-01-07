@@ -15,12 +15,17 @@ export function formatDate(inputDate: string) {
   const inputDateObject = new Date(year, month, day);
 
   // Format the date
-  const options = { year: "numeric", month: "long", day: "numeric" };
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
   const formattedDate = inputDateObject.toLocaleDateString("en-US", options);
 
   // Calculate the time difference
   const currentDate = new Date();
-  const timeDifference = currentDate - inputDateObject;
+  const timeDifference: number =
+    currentDate.getTime() - inputDateObject.getTime();
 
   // Convert milliseconds to seconds, minutes, hours, days, months, and years
   const seconds = Math.floor(timeDifference / 1000);

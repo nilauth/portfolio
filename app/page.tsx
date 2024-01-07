@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function Home() {
   const [isHovered, setIsHovered] = useState(false);
-  const { x, y } = useMousePosition();
+  const { x, y }: { x: number; y: number } = useMousePosition();
   const size = isHovered ? 1200 : 40;
 
   return (

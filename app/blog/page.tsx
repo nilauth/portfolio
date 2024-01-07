@@ -45,8 +45,7 @@ const BlogPage = () => {
     };
   });
 
-  let latestYears = {};
-
+  let latestYears: Record<string, boolean> = {};
   return (
     <main className='w-1/2 mx-auto mt-12 max-w-[650px] font-sans'>
       <h1 className='text-2xl mb-8'>
@@ -94,8 +93,8 @@ const BlogPage = () => {
           {blogs
             .sort((a, b) => {
               // Assuming blog.meta.date is in the 'mm-dd-yyyy' format
-              const dateA = new Date(a.meta.date);
-              const dateB = new Date(b.meta.date);
+              const dateA: any = new Date(a.meta.date);
+              const dateB: any = new Date(b.meta.date);
               return dateB - dateA; // Sort in descending order (newest first)
             })
             .map((blog) => {

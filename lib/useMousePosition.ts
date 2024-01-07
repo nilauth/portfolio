@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 
 const useMousePosition = () => {
   const [mousePosition, setMousePosition] = useState({
-    x: null,
-    y: null,
+    x: 0,
+    y: 0,
   });
 
   const updateMousePosition = (e: any) => {
