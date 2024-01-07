@@ -47,7 +47,7 @@ const BlogPage = () => {
 
   let latestYears: Record<string, boolean> = {};
   return (
-    <main className='w-1/2 mx-auto mt-12 max-w-[650px] font-sans'>
+    <main className='lg:w-1/2 mx-1  lg:mx-auto mt-12 max-w-[650px] font-sans'>
       <h1 className='text-2xl mb-8'>
         What I have to say about different type of stuff
       </h1>

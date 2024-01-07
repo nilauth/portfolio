@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const ProjectsPage = () => {
   return (
-    <main className='w-1/2 mx-auto mt-16 font-sans max-w-[650px]'>
+    <main className='lg:w-1/2 mx-auto px-2 mt-16 font-sans max-w-[650px]'>
       <div className='flex flex-col items-center gap-4'>
         <Link
           href='/projects/project-management-app'
@@ -55,7 +55,7 @@ const ProjectsPage = () => {
               for elegant and efficient file uploads.
             </div>
           </div>
-          <div className='flex gap-x-2 mt-4'>
+          <div className='flex gap-2 mt-4 flex-wrap'>
             <Badge variant='default'>full-stack</Badge>
             <Badge variant='default'>Next.js 14</Badge>
             <Badge variant='default'>ShadcnUI</Badge>

@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <main className='h-screen font-mono'>
       <motion.div
-        className='flex h-full cursor-default justify-center items-center text-[50px] leading-[66px] w-full absolute left-0 top-0 bg-main'
+        className='hidden lg:flex h-full cursor-default justify-center items-center text-[50px] leading-[66px] w-full absolute left-0 top-0 bg-main'
         style={{
           maskImage: 'url("/mask.svg")',
           maskRepeat: "no-repeat",
@@ -40,7 +40,7 @@ export default function Home() {
         </p>
       </motion.div>
 
-      <div className='text-second flex cursor-default justify-center items-center text-[50px] leading-[66px] w-full h-full'>
+      <div className='text-second flex cursor-default justify-center items-center lg:text-[50px] lg:leading-[66px] w-full h-full'>
         <p className='w-[1000px] p-10 text-center'>
           <span className='block'>I&apos;m Nizar</span>A{" "}
           <span className='text-main'>full-stack developer</span> dedicated to
