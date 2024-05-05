@@ -20,7 +20,7 @@ const options = {
 };
 
 // disable caching
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join("content"));
