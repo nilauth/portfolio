@@ -56,6 +56,9 @@ export async function generateMetadata({ params }: any) {
 export default function Post({ params }: any) {
   const props = getPost(params);
 
+  console.log(props.frontMatter.date);
+  console.log(formatDate(props.frontMatter.date));
+
   return (
     <main className='mt-12 font-sans'>
       <article className='text-slate-900/80 leading-8 prose prose-p:text-base prose-h1:text-2xl prose-sm md:prose-base lg:prose-lg mx-auto max-w-[650px] px-4 pb-6'>
