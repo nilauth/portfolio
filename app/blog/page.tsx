@@ -21,6 +21,8 @@ export const metadata: Metadata = {
   description: "Nilauth's blog.",
 };
 
+// 
+
 const BlogPage = () => {
   // mdx related code
 
