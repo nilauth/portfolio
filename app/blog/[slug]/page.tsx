@@ -19,6 +19,9 @@ const options = {
   },
 };
 
+// disable caching
+export const dynamic = "force-dynamic";
+
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join("content"));
 
@@ -30,10 +33,7 @@ export async function generateStaticParams() {
 }
 
 function getPost({ slug }: { slug: string }) {
-  const markdownFile = fs.readFileSync(
-    path.join("content", slug + ".mdx"),
-    "utf-8"
-  );
+  const markdownFile = fs.readFileSync(path.join("content", slug + ".mdx"), "utf-8");
 
   const { data: frontMatter, content } = matter(markdownFile);
 
@@ -61,9 +61,7 @@ export default function Post({ params }: any) {
       <article className='text-slate-900/80 leading-8 prose prose-p:text-base prose-h1:text-2xl prose-sm md:prose-base lg:prose-lg mx-auto max-w-[650px] px-4 pb-6'>
         <GoBack url='/blog' />
 
-        <h1 className='title font-medium tracking-tighter max-w-[650px]'>
-          {props.frontMatter.title}
-        </h1>
+        <h1 className='title font-medium tracking-tighter max-w-[650px]'>{props.frontMatter.title}</h1>
         <div className='mt-[-16px] text-sm text-slate-500'>
           <Link
             href='https://twitter.com/nilauth'
@@ -76,11 +74,7 @@ export default function Post({ params }: any) {
           | {formatDate(props.frontMatter.date)}
         </div>
         <div className='prose-img:m-0'>
-          <MDXRemote
-            source={props.content}
-            components={{ Tweet, ExternalLink, Link }}
-            options={options}
-          />
+          <MDXRemote source={props.content} components={{ Tweet, ExternalLink, Link }} options={options} />
         </div>
       </article>
     </main>

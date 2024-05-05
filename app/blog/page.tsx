@@ -1,12 +1,4 @@
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import Link from "next/link";
 
 // mdx related imports
@@ -21,7 +13,7 @@ export const metadata: Metadata = {
   description: "Nilauth's blog.",
 };
 
-// 
+
 
 const BlogPage = () => {
   // mdx related code
@@ -50,9 +42,7 @@ const BlogPage = () => {
   let latestYears: Record<string, boolean> = {};
   return (
     <main className='lg:w-1/2 mx-1  lg:mx-auto mt-12 max-w-[650px] font-sans'>
-      <h1 className='text-2xl mb-8'>
-        What I have to say about different type of stuff
-      </h1>
+      <h1 className='text-2xl mb-8'>What I have to say about different type of stuff</h1>
       <Table>
         <TableCaption></TableCaption>
         <TableHeader>
@@ -110,9 +100,7 @@ const BlogPage = () => {
 
               return (
                 <TableRow key={blog.slug}>
-                  <TableCell className='text-left text-muted-foreground w-fit'>
-                    {yearToDisplay}
-                  </TableCell>
+                  <TableCell className='text-left text-muted-foreground w-fit'>{yearToDisplay}</TableCell>
                   <TableCell className='font-medium'>
                     <Link
                       href={"/blog/" + blog.slug}
@@ -120,8 +108,7 @@ const BlogPage = () => {
                       key={blog.slug}
                       className={cn({
                         "hover:underline": blog.meta.released,
-                        "text-muted-foreground/40 pointer-events-none italic":
-                          !blog.meta.released,
+                        "text-muted-foreground/40 pointer-events-none italic": !blog.meta.released,
                       })}
                     >
                       {blog.meta.title}
