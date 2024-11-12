@@ -44,7 +44,8 @@ function getPost({ slug }: { slug: string }) {
   };
 }
 
-export async function generateMetadata({ params }: any) {
+export async function generateMetadata(props: any) {
+  const params = await props.params;
   const blog = getPost(params);
 
   return {
@@ -53,7 +54,8 @@ export async function generateMetadata({ params }: any) {
   };
 }
 
-export default function Post({ params }: any) {
+export default async function Post(props0: any) {
+  const params = await props0.params;
   const props = getPost(params);
 
   console.log(props.frontMatter.date);
